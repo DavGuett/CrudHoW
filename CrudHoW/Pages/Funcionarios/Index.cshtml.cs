@@ -15,7 +15,7 @@ namespace CrudHoW.Pages.Funcionarios
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    String sql = "SELECT * FROM clients";
+                    String sql = "SELECT * FROM Funcionarios";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
