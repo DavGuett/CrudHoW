@@ -1,0 +1,19 @@
+﻿@page
+@using System.Data.SqlClient;
+@{
+    String id = Request.Query["Id"];
+    String connectionString = "Data Source=.\\sqlexpress;Initial Catalog=CRUD;Integrated Security=True";
+    using (SqlConnection connection = new SqlConnection(connectionString))
+    {
+        connection.Open();
+        String sql = "DELETE FROM Funcionarios WHERE id=@Id";
+
+        using (SqlCommand command = new SqlCommand(sql, connection))
+        {
+            command.Parameters.AddWithValue("@Id", id);
+
+            command.ExecuteNonQuery();
+        }
+        Response.Redirect("/Funcionarios/Index");
+    }
+}
